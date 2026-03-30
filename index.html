@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Biz | Aesthetic Content for Small Biz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+    @media (max-width: 600px) {
+    .hero h1 { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .nav-links { display: none; } /* Hides links to save space */
+    .services-grid, .pricing-grid, .portfolio-grid {
+        grid-template-columns: 1fr; /* Stacks everything in one column */
+    }
+}
+        /* --- COLOR PALETTE & VARIABLES --- */
+        :root {
+            --olive: #5b6e34;
+            --olive-light: #7b8e54;
+            --brown-dark: #3a2618;
+            --brown-mid: #6b4c3a;
+            --bg-cream: #f4eee8;
+            --white: #ffffff;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--brown-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--bg-cream);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 50px; /* Adjust based on your logo */
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--olive);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--olive);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #e3d5c8 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--brown-dark);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--olive);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .btn {
+            background-color: var(--olive);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 2px solid var(--olive);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--olive);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(91, 110, 52, 0.2);
+        }
+
+        /* --- QUOTE BANNER --- */
+        .quote-banner {
+            background-color: var(--brown-dark);
+            color: var(--bg-cream);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* --- SECTIONS (General) --- */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--olive);
+        }
+
+        /* --- SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-bottom: 5px solid var(--olive);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--brown-dark);
+        }
+
+        .service-emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background-color: var(--brown-mid);
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-cream);
+            font-weight: 600;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Placeholder for actual images/videos */
+        .portfolio-item::before {
+            content: "Your Work Here";
+            position: absolute;
+        }
+
+        /* --- PRICING --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: var(--white);
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid var(--bg-cream);
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: var(--olive);
+            box-shadow: 0 15px 30px rgba(91, 110, 52, 0.1);
+        }
+
+        .price-card h3 {
+            font-size: 2rem;
+            color: var(--brown-dark);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--olive);
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--brown-mid);
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .price-card ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .price-card ul li::before {
+            content: "✓";
+            color: var(--olive);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .contact-details {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-details a {
+            color: var(--olive);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--bg-cream);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--olive);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--brown-dark);
+            color: var(--bg-cream);
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can add hamburger menu later */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <img src="jj.jpg" alt="Easy Biz Logo">
+            <div class="logo-text">EasyBiz</div>
+        </div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#work">My Work</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="about">
+        <h1>Level Up Your Brand. <br><span>No Cap.</span></h1>
+        <p>I create aesthetic AI product photos, viral UGC videos, and manage your posting schedule so you can focus on running your business. High-quality content doesn't have to cost a fortune.</p>
+        <a href="#contact" class="btn">Let's Grow Together 🚀</a>
+    </section>
+
+    <div class="quote-banner">
+        "Big agency quality, small business budget. Helping your brand glow up without breaking the bank." ✨
+    </div>
+
+    <section id="services">
+        <h2 class="section-title">What I Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-emoji">🤖📸</div>
+                <h3>AI Product Photos</h3>
+                <p>Next-gen visuals. I use advanced AI to generate stunning, lifestyle product photography that makes your items pop on social media and your website.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-emoji">🤳✨</div>
+                <h3>UGC Videos</h3>
+                <p>Authentic, relatable User Generated Content that actually converts. Unboxings, reviews, and aesthetic mini-vlogs tailored to your brand's vibe.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-emoji">📅📈</div>
+                <h3>Video Scheduling</h3>
+                <p>We post, you chill. I'll handle your TikTok/Reels/Shorts uploading schedule, optimizing post times to hit the algorithm right.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" style="background-color: var(--white);">
+        <h2 class="section-title">The Vault (My Work)</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2 class="section-title">Transparent Pricing</h2>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Because small businesses deserve fair rates. No hidden fees.</p>
+        
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>The Starter Pack</h3>
+                <div class="price">2500rs<span>/month</span></div>
+                <ul>
+                    <li>10 AI Generated Product Photos</li>
+                    <li>2 UGC Videos (15-30 secs)</li>
+                    
+                </ul>
+                <a href="#contact" class="btn">Choose This</a>
+            </div>
+
+            <div class="price-card" style="border: 2px solid var(--olive); transform: scale(1.05);">
+                <h3>The Glow Up</h3>
+                <div class="price">5000rs<span>/month</span></div>
+                <ul>
+                    <li>25 AI Generated Product Photos</li>
+                    <li>5 UGC Videos (Trending audio)</li>
+                    <li>Full Upload Scheduling</li>
+                    <li>Caption Writing</li>
+                </ul>
+                <a href="#contact" class="btn">Choose This</a>
+            </div>
+
+            <div class="price-card">
+                <h3>A La Carte</h3>
+                <div class="price">Custom</div>
+                <ul>
+                    <li>Need just one video?</li>
+                    <li>Only need AI Photos?</li>
+                    <li>Let's chat and build a bundle just for you.</li>
+                </ul>
+                <a href="#contact" class="btn">Let's Chat</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--white);">
+        <h2 class="section-title">Slide Into My DMs</h2>
+        <div class="contact-container">
+            <div class="contact-details">
+                <p>Ready to elevate your business? Reach out below or email me directly at:</p>
+                <a href="mailto:hello@easybiz.com">hello@easybiz.com</a>
+            </div>
+            <form action="#" method="POST">
+                <input type="text" placeholder="Your Name / Brand Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Tell me about your business and what you need! Let's get this bread. 🍞" required></textarea>
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <h2>EasyBiz</h2>
+        <p>© 2026 Easy Biz. Helping small businesses win.</p>
+    </footer>
+
+</body>
+</html>
