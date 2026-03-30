@@ -8,41 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
   @media (max-width: 600px) {
-    /* Make the hero text fit the screen */
     .hero h1 { font-size: 2.5rem; }
     .section-title { font-size: 2rem; }
-
-    /* Show links on mobile but make them look like buttons */
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 0;
-    }
-
-    .nav-links a {
-        font-size: 0.8rem;
-        background: var(--olive);
-        color: white;
-        padding: 5px 12px;
-        border-radius: 20px;
-    }
-
-    /* Stack the grids so they aren't squashed */
+    .nav-links { display: none; } /* Hides links to save space */
     .services-grid, .pricing-grid, .portfolio-grid {
-        grid-template-columns: 1fr; 
-    }
-    
-    .logo-container {
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    nav {
-        flex-direction: column;
-        padding: 15px;
+        grid-template-columns: 1fr; /* Stacks everything in one column */
     }
 }
 }
